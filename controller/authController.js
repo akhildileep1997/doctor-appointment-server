@@ -47,8 +47,8 @@ const loginController = async (req, res) => {
         message: "User Not Found",
       });
     }
-    const isPasswordMatch = await bcrypt.compare(password, user.password);
-    if (!isPasswordMatch) {
+    const PasswordMatch = await bcrypt.compare(password, user.password);
+    if (!PasswordMatch) {
       return res.status(200).send({
         success: true,
         message: "Incorrect Password Or Email",
@@ -221,13 +221,12 @@ const bookAnAppointmentController = async (req, res) => {
     const user = await userModel.findOne({ _id: req.body.doctorInfo.userId });
     user.notification.push({
       type: "New-appointment-request",
-      message: `A nEw Appointment Request from ${req.body.userInfo.name}`,
-      onCLickPath: "/user/appointments",
+      message: `A new Appointment Request from ${req.body.userInfo.name}`,
     });
     await user.save();
     res.status(200).send({
       success: true,
-      message: "Appointment Booked For The Doctor successfully",
+      message: "Booking response received and send for doctor approval",
     });
   } catch (error) {
     console.log(error);

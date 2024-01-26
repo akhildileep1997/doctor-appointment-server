@@ -8,7 +8,6 @@ const {
   deleteAllNotificationController,
   getAllDoctorsController,
   bookAnAppointmentController,
-  checkAvailabilityForBookingController,
   getAppointmentListController,
 } = require("../controller/authController");
 

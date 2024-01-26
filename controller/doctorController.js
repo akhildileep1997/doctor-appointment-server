@@ -124,7 +124,6 @@ const updateUserBookingStatusController = async (req, res) => {
     user.notification.push({
       type: "Updated Status",
       message: `Your Booking Request Has Been  ${status} `,
-      onClickPath: "/doctor-appointments",
     });
     await user.save();
     res.status(200).send({
